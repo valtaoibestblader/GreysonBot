@@ -120,7 +120,7 @@ GreysonG_IMG = "https://telegra.ph/file/83dbae46536c4f88a28b7.jpg"
 
 SOURCE_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully opensource . \n\nHere is my source below 👇
 
-⚙️ Source ⚙️ -  [Click here](https://github.com/DevelopedBots/GreysonBot) ."""
+⚙️ Source ⚙️ -  [Click here](https://github.com/Kunal-Diwan/GreysonBot) ."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -694,7 +694,7 @@ def main():
 
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
-            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Yes I'm alive 😹")
+            dispatcher.bot.sendMessage(f"@{SUPPORT_CHAT}", "Yes I'm online")
         except Unauthorized:
             LOGGER.warning(
                 "Bot isnt able to send message to support_chat, go and check!"
