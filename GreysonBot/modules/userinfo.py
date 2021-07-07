@@ -6,7 +6,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import escape_markdown
 
 import GreysonBot.modules.sql.userinfo_sql as sql
-from GreysonBot import dispatcher, SUDO_USERS, DEV_USERS
+from GreysonBot import dispatcher, WOLVES_USERS, DEV_USERS
 from GreysonBot.modules.disable import DisableAbleCommandHandler
 from GreysonBot.modules.helper_funcs.extraction import extract_user
 
