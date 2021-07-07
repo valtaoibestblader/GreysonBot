@@ -1,7 +1,8 @@
 import threading
 
-from GreysonBot.modules.sql import BASE, SESSION
 from sqlalchemy import Column, Integer, UnicodeText
+
+from GreysonBot.modules.sql import SESSION, BASE
 
 
 class UserInfo(BASE):
