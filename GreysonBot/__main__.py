@@ -27,7 +27,6 @@ from GreysonBot import (
     CERT_PATH,
     PORT,
     URL,
-    log,
     telethn,
     KigyoINIT
 )
