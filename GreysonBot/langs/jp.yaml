@@ -13,7 +13,7 @@ pm_start_text: |
    私はアニメをテーマにしたグループ管理ボットで、楽しい機能がいくつかあります;）
 
    使用可能なコマンドのリストは /help で見つけることができます。
-grp_start_text: 「こんにちは、キギョです。」
+g_start_text: 「こんにちは、キギョです。」
 
 pm_help_text: |
    Hello there! My name is *Greyson*. A part of *Eagle Union*.
