@@ -743,7 +743,7 @@ def main():
         LOGGER.info("Greyson Running ......")
         updater.start_polling(timeout=15, read_latency=4, clean=True)
         updater.bot.send_message(
-            chat_id=MESSAGE_DUMP,
+            chat_id=SUPPORT_CHAT,
             text="I have been deployed successfully ...... Ready to run 🏃 ")
 
     if len(argv) not in (1, 3, 4):
