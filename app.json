@@ -160,15 +160,15 @@
          "required": false,
          "value": ""
       },
-    "URL": {
+      "URL": {
          "description": "The Heroku App URL :-  https://<appname>.herokuapp.com/",
          "required": false,
          "value": ""
       },
-    "MESSAGE_DUMP": {
-      "description": "A chat for logging bot events.. ⚠️ Remember :- You must add your bot to that group.. Otherwise telethon modules never works.. Eg songs etc💌",
-      "value": "",
-      "required": true
+      "MESSAGE_DUMP": {
+        "description": "A chat for logging bot events.. ⚠️ Remember :- You must add your bot to that group.. Otherwise telethon modules never works.. Eg songs etc💌",
+        "value": "",
+        "required": true
      },
       "No_LOAD": {
          "description": "Dont load these modules cause they shit, space separation",
