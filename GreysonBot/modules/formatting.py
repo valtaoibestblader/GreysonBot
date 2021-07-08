@@ -1,4 +1,4 @@
-from GreysonBot.modules.helper_funcs.decorators import greysoncallback
+from GreysonBot.modules.helper_funcs.decorators import kigyocallback
 from telegram import (
     ParseMode,
     Update,
