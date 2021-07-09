@@ -95,11 +95,11 @@ buttons = [
     ],
     [
         InlineKeyboardButton(text="ℹ️ About", callback_data="greyson_"),
-        InlineKeyboardButton(text="📚 Modules", callback_data="help_back"),
+        InlineKeyboardButton(text="⚒️ Support 🛠", callback_data="support_"),
     ],
     [
         InlineKeyboardButton(
-            text="⚒️ Support 🛠", callback_data="support_"
+            text="❌ Close Main Menu ❌", callback_data="close_menu"
         ),
     ],
 ]
@@ -234,6 +234,59 @@ def start(update: Update, context: CallbackContext):
             GreysonG_IMG,
             G_START_TEXT.format(uptime),
         )
+
+
+def send_start(update, context):
+    # Try to remove old message
+    try:
+        query = update.callback_query
+        query.message.delete()
+    except BaseException:
+        pass
+
+    chat = update.effective_chat  # type: Optional[Chat]
+    first_name = update.effective_user.first_name
+    text = PM_START_TEXT
+    buttons = [[InlineKeyboardButton(text="⚙️ Commands Help ⚙️",
+                                  callback_data="help_back"),
+    ]]
+             
+
+    buttons += [[InlineKeyboardButton(text="🚫 Close Menu 🚫",
+                                  callback_data="close_menu")]]
+
+
+    update.effective_message.reply_text(
+        PM_START_TEXT,
+        reply_markup=InlineKeyboardMarkup(buttons),
+        parse_mode=ParseMode.MARKDOWN,
+        timeout=60,
+        disable_web_page_preview=False,
+    )
+
+
+def start_stop(update, context):
+    # Try to remove old message
+    try:
+        query = update.callback_query
+        query.message.delete()
+    except BaseException:
+        pass
+
+    chat = update.effective_chat  # type: Optional[Chat]
+    first_name = update.effective_user.first_name
+    text = "⛔ Menu Closed ⛔"
+    buttons = [[InlineKeyboardButton(text="🔄 Reopen Menu 🔄",
+                                     callback_data="bot_start")]]
+
+    update.effective_message.reply_text(
+        text,
+        reply_markup=InlineKeyboardMarkup(buttons),
+        parse_mode=ParseMode.MARKDOWN,
+        timeout=60,
+        disable_web_page_preview=False,
+    )
+
 
 
 def error_handler(update, context):
