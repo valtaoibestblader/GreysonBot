@@ -13,6 +13,7 @@ from GreysonBot import (
     PORT,
     SUPPORT_CHAT,
     TOKEN,
+    MESSAGE_DUMP,
     URL,
     WEBHOOK,
     SUPPORT_CHAT,
