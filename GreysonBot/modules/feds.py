@@ -2407,15 +2407,6 @@ Feds are now divided into 3 sections for your ease.
 ❍ /fedownerhelp*:* Provides help for fed creation and owner only commands
 ❍ /fedadminhelp*:* Provides help for fed administration commands
 ❍ /feduserhelp*:* Provides help for commands anyone can use
- 
-[
-        InlineKeyboardButton(text="Fedadmins", callback_data="fed_help_admin"),
-        InlineKeyboardButton(text="Fedowners", callback_data="fed_help_owner")
-    ],
-    [
-        InlineKeyboardButton(text="Users", callback_data="fed_help_user")
-    ],
-]
 
 """
 
