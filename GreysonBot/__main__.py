@@ -116,6 +116,34 @@ buttons = [
     ],
 ]
 
+
+GREYSON_SBACK_TEXT = """
+Hello there,  nice to meet you!
+I'm Grayson, a full-fledged group management bot built to help you manage your group easily.\n 
+I can do a lot of cool stuffs, here's a short list:
+• I can restrict users.
+• I can greet users with customizable welcome messages and even set a group's rules.
+• I have an advanced anti-flood system.
+• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
+• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
+• I check for admins' permissions before executing any command.\n
+…and much more stuffs, check out /help!
+
+All of the possible commands can be used properly if I am an administrator in your group otherwise, I will not able to restrict users, send certain predefined actions etc.
+"""
+
+
+
+supportbuttons = [[InlineKeyboardButton(text="News 📢",
+                                  url="https://t.me/GraysonNews"),
+             InlineKeyboardButton(text="Group🎙",
+                                  url="https://t.me/GreysonChats"),
+    ]]
+             
+
+    supportbuttons += [[InlineKeyboardButton(text="👨‍💻 Developer 👨‍💻",
+                                  url="t.me/Kunaldiwan")]]
+
 HELP_STRINGS = """
 *Help*
 
@@ -473,15 +501,15 @@ def Support_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Go Back", callback_data="support_back")
+                    InlineKeyboardButton(text="⬅️ Menu", callback_data="support_back")
                  ]
                 ]
             ),
         )
     elif query.data == "support_back":
         query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
+                GREYSON_SBACK_TEXT,
+                reply_markup=InlineKeyboardMarkup(supportbuttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=False,
