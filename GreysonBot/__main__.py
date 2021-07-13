@@ -141,7 +141,7 @@ supportbuttons = [[InlineKeyboardButton(text="News 📢",
     ]]
              
 
-    supportbuttons += [[InlineKeyboardButton(text="👨‍💻 Developer 👨‍💻",
+    buttons += [[InlineKeyboardButton(text="👨‍💻 Developer 👨‍💻",
                                   url="t.me/Kunaldiwan")]]
 
 HELP_STRINGS = """
