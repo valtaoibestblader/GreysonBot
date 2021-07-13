@@ -137,12 +137,7 @@ All of the possible commands can be used properly if I am an administrator in yo
 supportbuttons = [[InlineKeyboardButton(text="News 📢",
                                   url="https://t.me/GraysonNews"),
              InlineKeyboardButton(text="Group🎙",
-                                  url="https://t.me/GreysonChats"),
-    ]]
-             
-
-    buttons += [[InlineKeyboardButton(text="👨‍💻 Developer 👨‍💻",
-                                  url="t.me/Kunaldiwan")]]
+                                  url="https://t.me/GreysonChats")]]
 
 HELP_STRINGS = """
 *Help*
