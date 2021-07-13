@@ -94,15 +94,10 @@ I can help you to manage your group when you'll off.
 
 
 
-abackbuttons = [
-    [
-        InlineKeyboardButton(text="➕ Add me ➕", callback_data="t.me/MrGreysonBot?startgroup=true"),
-        InlineKeyboardButton(text="⚙️ Help ⚙️", callback_data="help_back")
-
-        ),
-    ],
-]
-
+abackbuttons = [[InlineKeyboardButton(text="➕ Add me ➕",
+                                  url="t.me/MrGreysonBot?startgroup=true"),
+             InlineKeyboardButton(text="⚙️ Help ⚙️",
+                                  callback_data="help_back")]]
 
 
 buttons = [
