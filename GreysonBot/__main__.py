@@ -87,6 +87,23 @@ G_START_TEXT = """
 Hello Greyson is in the chat . I am online since
 Uptime - {}!
 """
+GREYSON_ABACK_TEXT = """
+Hello I am Greyson . I can make group management easy.\n 
+I can help you to manage your group when you'll off.
+"""
+
+
+
+abackbuttons = [
+    [
+        InlineKeyboardButton(text="➕ Add me ➕", callback_data="t.me/MrGreysonBot?startgroup=true"),
+        InlineKeyboardButton(text="⚙️ Help ⚙️", callback_data="help_back")
+
+        ),
+    ],
+]
+
+
 
 buttons = [
     [
@@ -441,8 +458,8 @@ def greyson_about_callback(update, context):
         )
     elif query.data == "greyson_back":
         query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
+                GREYSON_ABACK_TEXT,
+                reply_markup=InlineKeyboardMarkup(abackbuttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=False,
