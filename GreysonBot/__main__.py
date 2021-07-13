@@ -119,19 +119,6 @@ If you have any bugs or questions on how to use me head to @GreysonChats. \n\nAl
 
 GreysonG_IMG = "https://telegra.ph/file/83dbae46536c4f88a28b7.jpg"
 
-STICKERS = (
-    "CAACAgUAAxkBAAJOGmBeli95P073FKVkgc4esfKE4UlXAAIOAgACyavAVkbLMIidWYdyHgQ",
-    "CAACAgUAAxkBAAJOG2BeljABwlCfwzHT1gzyiciBri6_AAIsAgACXBPBVgpGQRz-1qmlHgQ",
-    "CAACAgUAAxkBAAJOHGBeljOJ35CQNnkpnVcgRoHuJX6DAAL3AQACN8TBVm1PIART01cWHgQ",
-    "CAACAgUAAxkBAAJOHWBeljXW9QzYQ51gpCjHZHCF5Ui6AAJ7AgAC3zDBVo2xenp7JYhAHgQ",
-    "CAACAgUAAxkBAAJOHmBeljjU0_FT_QpdUUJBqVUC0nfJAAKYAgACJ_jBVvntHY_8WF27HgQ",
-    "CAACAgUAAxkBAAJOH2BeljrV68mPLu8_6n4edT20Q3IQAAJ9AgACq3LBVmLuZuNPlvkfHgQ",
-    "CAACAgUAAxkBAAJOIGBeljttuniUPykRtzkSZj3SRwKJAAI7AgACNm_BVp8TCkE6ZqCoHgQ",
-    "CAACAgUAAxkBAAJOIWBelj-P_2vtVqtkF2OMlVN3M0N4AAK3AQACSm3BVkXF2voraS2tHgQ",
-    "CAACAgUAAxkBAAJOImBelkJxUBm2rL1iPfMZfk-_9DaOAALrAgAC4T3BVniopXQVsZ4KHgQ",
-    "CAACAgUAAxkBAAJOI2BelkMO0AX_wtAc7hUZz1NixuMlAAKEAwACY4TAViVuNLTBmmkgHgQ",
-)
-
 SOURCE_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully opensource . \n\nHere is my source below 👇
 
 ⚙️ Source ⚙️ -  [Click here](https://github.com/Kunal-Diwan/GreysonBot) ."""
@@ -237,7 +224,7 @@ def start(update: Update, context: CallbackContext):
 
         else:
             update.effective_message.reply_text(
-                STICKERS, PM_START_TEXT
+                PM_START_TEXT,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
