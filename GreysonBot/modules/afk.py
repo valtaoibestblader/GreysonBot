@@ -1,7 +1,7 @@
 import random, html
 
-from MashaRoBot import dispatcher
-from MashaRoBot.modules.disable import (
+from GreysonBot import dispatcher
+from GreysonBot.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
