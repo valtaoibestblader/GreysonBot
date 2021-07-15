@@ -22,6 +22,18 @@ Join the [News channel](https://telegram.dog/GraysonNews) if you just want to st
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Kunal-Diwan/GreysonBot)
 
+<details><summary>Deploy To VPS</summary>
+<p>
+<pre>
+git clone https://github.com/Kunal-Diwan/GreysonBot
+cd GreysonBot-ReMain
+pip3 install -r requirements.txt
+# Change The config.py Of bot /__init__.py File Accordingly
+python3 -m bot
+</pre>
+</p>
+</details>
+
 ### Credits 👨‍💻 -
 
 Original credit goes to me - [@kunaldiwan](https://telegram.dog/kunaldiwan) .
