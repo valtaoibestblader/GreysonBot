@@ -4,7 +4,7 @@
 
 Powerfull Ai based bot to manage your Groups. 
 
-**Greyson real credit goes to Masha and Saitama bot.**
+**Greyson real credit goes to Masha and Daisy bot.**
 
 It has been hosted in Digital ocean for working as long as possible. 
 
