@@ -256,7 +256,7 @@ def send_start(update, context):
 
     update.effective_message.reply_text(
         PM_START_TEXT,
-        reply_markup=InlineKeyboardMarkup(buttons),
+        reply_markup=InlineKeyboardMarkup(keyboard),
         parse_mode=ParseMode.MARKDOWN,
         timeout=60,
         disable_web_page_preview=False,
