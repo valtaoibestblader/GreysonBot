@@ -99,13 +99,13 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="🎥 Configuration Tutorial 🎥", callback_data="aboutmanu_"
+            text="🎥 Configuration Tutorial 🎥", callback_data="tutmanu_"
         ),
     ],
 ]
 
 videobuttons = [[InlineKeyboardButton(text="✅ Done ✅",
-                                  callback_data="aboutmanu_credit")]]
+                                  callback_data="tutmanu_home")]]
 
 HELP_STRINGS = """
 *Help*
