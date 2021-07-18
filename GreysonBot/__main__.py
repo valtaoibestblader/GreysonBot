@@ -396,11 +396,11 @@ def greyson_about_callback(update, context):
     if query.data == "greyson_":
         query.message.edit_text(
             text=""" My name is *Greyson* , I have been written in python3 using mixed libraries. I'm online since 14 June 2021 and is constantly updated!
-*Bot Version*: _3.1_
-*Bot Admins* :
+*Bot Version*: _3.1_ \n
+*Bot Admins* : 
 • @kunaldiwan - bot creator and main developer 
 • @Grizzypal - server manager and developer
-• @Jimmioooo - support director
+• @Jimmioooo - support director \n
 *And finally special thanks of gratitude to all my users who relied on me for managing their groups, I hope you will always like me; My developers are constantly working to improve me!*""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -414,8 +414,8 @@ def greyson_about_callback(update, context):
         )
     elif query.data == "greyson_back":
         query.message.edit_text(
-                GREYSON_ABACK_TEXT,
-                reply_markup=InlineKeyboardMarkup(abackbuttons),
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=False,
@@ -500,8 +500,8 @@ def Support_about_callback(update, context):
         )
     elif query.data == "support_back":
         query.message.edit_text(
-                GREYSON_SBACK_TEXT,
-                reply_markup=InlineKeyboardMarkup(supportbuttons),
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=False,
