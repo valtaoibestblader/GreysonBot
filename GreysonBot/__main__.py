@@ -251,16 +251,8 @@ def send_start(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     first_name = update.effective_user.first_name
     text = PM_START_TEXT
-    buttons = [[InlineKeyboardButton(text="⚙️ Help ⚙️",
-                                  callback_data="help_back"),
-             InlineKeyboardButton(text="🔔 Updates 🔔",
-                                  url="https://t.me/GraysonNews"),
-    ]]
-
-
-    buttons += [[InlineKeyboardButton(text="➕ Add me to group ➕",
-                                  url="t.me/MrGreysonBot?startgroup=true")]]
-
+    keyboard = [[InlineKeyboardButton(text="➕ Add me ➕",url="t.me/MrGreysonBot?startgroup=true"),InlineKeyboardButton(text="⚙️ Help ⚙️",callback_data="help_back")]]
+    keyboard += [[InlineKeyboardButton(text="🌐 Connect 🌐", callback_data="main_connect"),InlineKeyboardButton(text="📱Tutorial📱",callback_data="tutmanu_"))]]
 
     update.effective_message.reply_text(
         PM_START_TEXT,
