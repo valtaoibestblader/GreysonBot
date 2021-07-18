@@ -7,7 +7,6 @@ from typing import Optional
 from GreysonBot import (
     ALLOW_EXCL,
     CERT_PATH,
-    MAINTAINER_LINK,
     LOGGER,
     OWNER_ID,
     PORT,
@@ -87,19 +86,6 @@ G_START_TEXT = """
 Hello Greyson is in the chat . I am online since
 Uptime - {}!
 """
-GREYSON_ABACK_TEXT = """
-Hello I am Greyson . I can make group management easy.\n 
-I can help you to manage your group when you'll off.
-"""
-
-
-
-abackbuttons = [[InlineKeyboardButton(text="➕ Add me ➕",
-                                  url="t.me/MrGreysonBot?startgroup=true"),
-             InlineKeyboardButton(text="⚙️ Help ⚙️",
-                                  callback_data="help_back")]]
-
-
 buttons = [
     [
         InlineKeyboardButton(
@@ -111,33 +97,10 @@ buttons = [
     ],
     [
         InlineKeyboardButton(
-            text="❌ Close Main Menu ❌", callback_data="close_menu"
+            text="🎥 Configuration Tutorial 🎥", callback_data="close_menu"
         ),
     ],
 ]
-
-
-GREYSON_SBACK_TEXT = """
-Hello there,  nice to meet you!
-I'm Grayson, a full-fledged group management bot built to help you manage your group easily.\n 
-I can do a lot of cool stuffs, here's a short list:
-• I can restrict users.
-• I can greet users with customizable welcome messages and even set a group's rules.
-• I have an advanced anti-flood system.
-• I can warn users until they reach max warns, with each predefined actions such as ban, mute, kick, etc.
-• I have a note keeping system, blacklists, and even predetermined replies on certain keywords.
-• I check for admins' permissions before executing any command.\n
-…and much more stuffs, check out /help!
-
-All of the possible commands can be used properly if I am an administrator in your group otherwise, I will not able to restrict users, send certain predefined actions etc.
-"""
-
-
-
-supportbuttons = [[InlineKeyboardButton(text="News 📢",
-                                  url="https://t.me/GraysonNews"),
-             InlineKeyboardButton(text="Group🎙",
-                                  url="https://t.me/GreysonChats")]]
 
 HELP_STRINGS = """
 *Help*
@@ -154,9 +117,16 @@ If you have any bugs or questions on how to use me head to @GreysonChats. \n\nAl
 
 GreysonG_IMG = "https://telegra.ph/file/83dbae46536c4f88a28b7.jpg"
 
+Greysontut_VID = "https://telegra.ph/file/b8260e300bdc998e9c3db.mp4"
+
 SOURCE_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully opensource . \n\nHere is my source below 👇
 
 ⚙️ Source ⚙️ -  [Click here](https://github.com/Kunal-Diwan/GreysonBot) ."""
+
+GREYSON_HOME_TEXT = """
+*Excellent!* \nNow the Bot is ready to use!\n\nUse /help to Know all modules and features
+`All commands can be used with / ? or !`
+"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -300,30 +270,6 @@ def send_start(update, context):
         timeout=60,
         disable_web_page_preview=False,
     )
-
-
-def start_stop(update, context):
-    # Try to remove old message
-    try:
-        query = update.callback_query
-        query.message.delete()
-    except BaseException:
-        pass
-
-    chat = update.effective_chat  # type: Optional[Chat]
-    first_name = update.effective_user.first_name
-    text = "⛔ Menu Closed ⛔"
-    buttons = [[InlineKeyboardButton(text="🔄 Reopen Menu 🔄",
-                                     callback_data="bot_start")]]
-
-    update.effective_message.reply_text(
-        text,
-        reply_markup=InlineKeyboardMarkup(buttons),
-        parse_mode=ParseMode.MARKDOWN,
-        timeout=60,
-        disable_web_page_preview=False,
-    )
-
 
 
 def error_handler(update, context):
@@ -476,11 +422,70 @@ def greyson_about_callback(update, context):
         )
     elif query.data == "greyson_back":
         query.message.edit_text(
-                GREYSON_ABACK_TEXT,
-                reply_markup=InlineKeyboardMarkup(abackbuttons),
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=False,
+        )
+
+
+@run_async
+def Greyson_tutorial_callback(update, context):
+    query = update.callback_query
+    if query.data == "tutorial_":
+        query.message.edit_text(
+            text=f"*Welcome to the Greyson configuration tutorial.* "
+            f"\n\n👇 The first thing to do is to *add Greyson to your group*! For doing that, press the under button and select your group, then press *Done* to continue the tutorial. 👇",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            text="➕️ Add Grayson to chat!  ➕️", url="t.me/MrGreysonBot?startgroup=true"
+                        )
+                    ],
+                    [InlineKeyboardButton(text="✅ Done ✅", callback_data="tutorial_exp")],
+                ]
+            ),
+        )
+    elif query.data == "tutorial_exp":
+        query.message.edit_text(
+            text=f"* Ok, well done! *"
+            f"\nNow for let me work correctly, you need to make me *Admin of your Group*! \n"
+            f"\nTo do that, follow this easy steps:\n"
+            f"▫️ Go to your group \n▫️ Press the Group's name \n▫️ Press Modify \n▫️ Press on Administrator \n▫️ Press Add Administrator \n▫️ Press the Magnifying Glass \n▫️ Search @MrGreysonBot \n▫️ Confirm"
+            f"",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            text="💾 Example Video 💾", callback_data="tutorial_video"
+                        ),
+                    ],
+                    [InlineKeyboardButton(text="✅ Done ✅", callback_data="tutorial_home")],
+                ]
+            ),
+        )
+    elif query.data == "tutorial_home":
+        update.effective_message.reply_text(
+            GREYSON_HOME_TEXT,
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton(text="🏡 Home 🏡", callback_data="bot_start")]]
+            ),
+        )
+
+    elif query.data == "tutorial_video":
+        update.effective_message.reply_animation(
+            Greysontut_VID,
+            reply_markup=InlineKeyboardMarkup(videobuttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
         )
 
 
@@ -503,8 +508,8 @@ def Support_about_callback(update, context):
         )
     elif query.data == "support_back":
         query.message.edit_text(
-                GREYSON_SBACK_TEXT,
-                reply_markup=InlineKeyboardMarkup(supportbuttons),
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=False,
@@ -801,15 +806,15 @@ def main():
     start_callback_handler = CallbackQueryHandler(
         send_start, pattern=r"bot_start")
     dispatcher.add_handler(start_callback_handler)
-    startstop_callback_handler = CallbackQueryHandler(
-        start_stop, pattern=r"close_menu")
-    dispatcher.add_handler(startstop_callback_handler)
 
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     about_callback_handler = CallbackQueryHandler(greyson_about_callback, pattern=r"greyson_")
     source_callback_handler = CallbackQueryHandler(Support_about_callback, pattern=r"support_")
+    tutorial_callback_handler = CallbackQueryHandler(
+        Greyson_tutorial_callback, pattern=r"tutorial_"
+    )
 
     source_handler = CommandHandler("source", source)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
@@ -824,6 +829,7 @@ def main():
     dispatcher.add_handler(settings_callback_handler)
     dispatcher.add_handler(migrate_handler)
     dispatcher.add_handler(source_handler)
+    dispatcher.add_handler(tutorial_callback_handler)
 
     dispatcher.add_error_handler(error_callback)
 
@@ -841,7 +847,7 @@ def main():
         updater.start_polling(timeout=15, read_latency=4, clean=True)
         updater.bot.send_message(
             chat_id=MESSAGE_DUMP,
-            text="I have been deployed successfully ...... Ready to run 🏃 ")
+            text="I have been deployed successfully ...... Ready to run 🏃 . Bot Version 2.0 ")
 
     if len(argv) not in (1, 3, 4):
         telethn.disconnect()
