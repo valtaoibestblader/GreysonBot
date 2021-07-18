@@ -76,8 +76,11 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 Hello , I am [Greyson](https://telegra.ph/file/83dbae46536c4f88a28b7.jpg) - I'm here to help you to manage your chats with ease. 
+
 ➡️ Just add me in your group as admin .
+
 Hit /help to know my commands .
+
 You can get my news everyday [here](t.me/GraysonNews) .
 """
 G_START_TEXT = """
