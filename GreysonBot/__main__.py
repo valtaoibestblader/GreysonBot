@@ -252,7 +252,7 @@ def send_start(update, context):
     first_name = update.effective_user.first_name
     text = PM_START_TEXT
     keyboard = [[InlineKeyboardButton(text="➕ Add me ➕",url="t.me/MrGreysonBot?startgroup=true"),InlineKeyboardButton(text="⚙️ Help ⚙️",callback_data="help_back")]]
-    keyboard += [[InlineKeyboardButton(text="🌐 Connect 🌐", callback_data="main_connect"),InlineKeyboardButton(text="📱Tutorial📱",callback_data="tutmanu_"))]]
+    keyboard += [[InlineKeyboardButton(text="🌐 Connect 🌐", callback_data="main_connect"),InlineKeyboardButton(text="📱Tutorial📱",callback_data="tutmanu_")]]
 
     update.effective_message.reply_text(
         PM_START_TEXT,
