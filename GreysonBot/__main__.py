@@ -395,7 +395,7 @@ def greyson_about_callback(update, context):
     query = update.callback_query
     if query.data == "greyson_":
         query.message.edit_text(
-            text=""" My name is *Greyson* , I have been written in python3 using mixed libraries. I'm online since 14 June 2021 and is constantly updated!
+            text=""" My name is *Greyson* , I have been written in python3 using mixed libraries. I'm online since 14 June 2021 and is constantly updated! \n
 *Bot Version*: _3.1_ \n
 *Bot Admins* : 
 • @kunaldiwan - bot creator and main developer 
