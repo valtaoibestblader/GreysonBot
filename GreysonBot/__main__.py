@@ -113,11 +113,14 @@ videobuttons = [[InlineKeyboardButton(text="✅ Done ✅",
 HELP_STRINGS = """
 *Help*
 Hey! My name is Greyson . I am a group management bot, here to help you get around and keep the order in your groups!
+
 I have lots of handy features, such as flood control, a warning system, a note keeping system, and even predetermined replies on certain keywords.
+
 *Helpful commands* :
 ✪ /start: Starts me! You've probably already used this. 
 ✪ /help: Sends this message; I'll tell you more about myself!
 ✪ /source: Gives you my source .
+
 If you have any bugs or questions on how to use me head to @GreysonChats. \n\nAll commands can be used with the following: / !\n\nAnd the following :-"""
 
 GreysonG_IMG = "https://telegra.ph/file/83dbae46536c4f88a28b7.jpg"
