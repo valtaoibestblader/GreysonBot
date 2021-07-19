@@ -84,8 +84,7 @@ Hit /help to know my commands .
 You can get my news everyday [here](t.me/GraysonNews) .
 """
 G_START_TEXT = """
-Hello Greyson is in the chat . I am online since
-Uptime - {}!
+Hello Greyson here , How can I help you ?
 """
 GREYSON_HOME_TEXT = """
 *Excellent!* \nNow the Bot is ready to use!\n\nUse /help to Know all modules and features
@@ -106,6 +105,9 @@ buttons = [
         ),
     ],
 ]
+
+gbuttons = [[InlineKeyboardButton(text="⚙️ help ⚙️",
+                                  url="http://t.me/MrGreysonBot?start=help")]]
 
 videobuttons = [[InlineKeyboardButton(text="✅ Done ✅",
                                   callback_data="tutmanu_home")]]
@@ -240,7 +242,7 @@ def start(update: Update, context: CallbackContext):
         update.effective_message.reply_photo(
             GreysonG_IMG,
             G_START_TEXT,
-            reply_markup=InlineKeyboardMarkup(buttons),
+            reply_markup=InlineKeyboardMarkup(gbuttons),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
         )
