@@ -19,8 +19,6 @@ logging.basicConfig(
 
 LOGGER = logging.getLogger(__name__)
 
-fileConfig('logging.ini')
-
 log = logging.getLogger('[Enterprise]')
 logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
 log.info("[KIGYO] Kigyo is starting. | An Eagle Union Project. | Licensed under GPLv3.")
