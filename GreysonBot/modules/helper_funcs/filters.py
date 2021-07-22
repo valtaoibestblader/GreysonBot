@@ -1,4 +1,4 @@
-from FilterryBot import DEV_USERS, DRAGONS, DEMONS
+from GreysonBot import DEV_USERS, DRAGONS, DEMONS
 from telegram import Message
 from telegram.ext import BaseFilter
 
