@@ -1244,10 +1244,8 @@ CLEAN_WELCOME = CommandHandler("cleanwelcome", clean_welcome, filters=Filters.gr
 WELCOME_HELP = CommandHandler("welcomehelp", welcome_help)
 WELCOME_MUTE_HELP = CommandHandler("welcomemutehelp", welcome_mute_help)
 BUTTON_VERIFY_HANDLER = CallbackQueryHandler(user_button, pattern=r"user_join_")
-)
 CAPTCHA_BUTTON_VERIFY_HANDLER = CallbackQueryHandler(
     user_captcha_button, pattern=r"user_captchajoin_\([\d\-]+,\d+\)_\(\d{4}\)", run_async=True
-)
 
 dispatcher.add_handler(NEW_MEM_HANDLER)
 dispatcher.add_handler(LEFT_MEM_HANDLER)
