@@ -11,7 +11,7 @@ from pyrate_limiter import (
 )
 
 try:
-    from tg_bot import CUSTOM_CMD
+    from greysonBot import CUSTOM_CMD
 except:
     CUSTOM_CMD = False
 
