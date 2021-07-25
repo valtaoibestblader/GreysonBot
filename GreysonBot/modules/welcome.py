@@ -28,7 +28,7 @@ from GreysonBot.modules.helper_funcs.string_handling import (
     markdown_parser,
 )
 from GreysonBot.modules.log_channel import loggable
-from GreysonBot.modules.sql.antispam_sql import is_user_gbanned
+from GreysonBot.modules.sql.global_bans_sql import is_user_gbanned
 from telegram import (
     ChatPermissions,
     InlineKeyboardButton,
