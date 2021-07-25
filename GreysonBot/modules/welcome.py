@@ -3,13 +3,11 @@ import random
 import re
 import time
 from functools import partial
-from contextlib import suppress
-
+from io import BytesIO
 import GreysonBot.modules.sql.welcome_sql as sql
-import GreysonBot
 from GreysonBot import (
     DEV_USERS,
-    LOGGER,
+    lOGGER,
     OWNER_ID,
     DRAGONS,
     DEMONS,
@@ -30,7 +28,7 @@ from GreysonBot.modules.helper_funcs.string_handling import (
     markdown_parser,
 )
 from GreysonBot.modules.log_channel import loggable
-from GreysonBot.modules.sql.global_bans_sql import is_user_gbanned
+from GreysonBot.modules.sql.antispam_sql import is_user_gbanned
 from telegram import (
     ChatPermissions,
     InlineKeyboardButton,
@@ -1225,8 +1223,26 @@ def __chat_settings__(chat_id, user_id):
         "It's goodbye preference is `{}`.".format(welcome_pref, goodbye_pref)
     )
 
-def get_help(chat):
-    return gs(chat, "greetings_help")
+
+__help__ = """
+*Admins only:*
+ ❍ /welcome <on/off>*:* enable/disable welcome messages.
+ ❍ /welcome*:* shows current welcome settings.
+ ❍ /welcome noformat*:* shows current welcome settings, without the formatting - useful to recycle your welcome messages!
+ ❍ /goodbye*:* same usage and args as `/welcome`.
+ ❍ /setwelcome <sometext>*:* set a custom welcome message. If used replying to media, uses that media.
+ ❍ /setgoodbye <sometext>*:* set a custom goodbye message. If used replying to media, uses that media.
+ ❍ /resetwelcome*:* reset to the default welcome message.
+ ❍ /resetgoodbye*:* reset to the default goodbye message.
+ ❍ /cleanwelcome <on/off>*:* On new member, try to delete the previous welcome message to avoid spamming the chat.
+ ❍ /welcomemutehelp*:* gives information about welcome mutes.
+ ❍ /cleanservice <on/off*:* deletes telegrams welcome/left service messages. 
+ *Example:*
+user joined chat, user left chat.
+
+*Welcome markdown:* 
+ ❍ /welcomehelp*:* view more formatting information for custom welcome/goodbye messages.
+"""
 
 NEW_MEM_HANDLER = MessageHandler(Filters.status_update.new_chat_members, new_member)
 LEFT_MEM_HANDLER = MessageHandler(Filters.status_update.left_chat_member, left_member)
@@ -1244,7 +1260,7 @@ CLEAN_WELCOME = CommandHandler("cleanwelcome", clean_welcome, filters=Filters.gr
 WELCOME_HELP = CommandHandler("welcomehelp", welcome_help)
 WELCOME_MUTE_HELP = CommandHandler("welcomemutehelp", welcome_mute_help)
 BUTTON_VERIFY_HANDLER = CallbackQueryHandler(user_button, pattern=r"user_join_")
-CAPTCHA_BUTTON_VERIFY_HANDLER = CallbackQueryHandler(user_captcha_button, pattern=r"user_captchajoin_\([\d\-]+,\d+\)_\(\d{4}\)",
+CAPTCHA_BUTTON_VERIFY_HANDLER = CallbackQueryHandler(user_captcha_button, pattern=r"user_captchajoin_\([\d\-]+,\d+\)_\(\d{4}\)")
 
 dispatcher.add_handler(NEW_MEM_HANDLER)
 dispatcher.add_handler(LEFT_MEM_HANDLER)
