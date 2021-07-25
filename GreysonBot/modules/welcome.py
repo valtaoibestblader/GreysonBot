@@ -312,7 +312,8 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
                         parse_mode=ParseMode.HTML,
                     )
                 update.effective_message.reply_text(
-                    "Watashi ga kita!", reply_to_message_id=reply
+                    "Thanks for adding me! Join @GreysonChats for support.",
+                    reply_to_message_id=reply,
                 )
                 continue
 
