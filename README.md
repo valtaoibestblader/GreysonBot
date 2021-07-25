@@ -22,15 +22,6 @@ Join the [News channel](https://telegram.dog/GraysonNews) if you just want to st
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Kunal-Diwan/GreysonBot)
 
-### Deploy to VPS -
-
-<code> git clone https://github.com/Kunal-Diwan/GreysonBot
-cd Image-Editor
-pip3 install -r requirements.txt
-# <Create config.py appropriately>
-python3 bot.py </code>
-
-
 ### Credits 👨‍💻 -
 
 Original credit goes to me - [@kunaldiwan](https://telegram.dog/kunaldiwan) .
