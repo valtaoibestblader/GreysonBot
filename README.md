@@ -24,11 +24,11 @@ Join the [News channel](https://telegram.dog/GraysonNews) if you just want to st
 
 ### Deploy to VPS -
 
-`git clone https://github.com/Kunal-Diwan/GreysonBot
+```git clone https://github.com/Kunal-Diwan/GreysonBot
 cd Image-Editor
 pip3 install -r requirements.txt
 # <Create config.py appropriately>
-python3 bot.py`
+python3 bot.py```
 
 
 ### Credits 👨‍💻 -
