@@ -198,61 +198,121 @@ def new_member(update: Update, context: CallbackContext):  # sourcery no-metrics
 
         if should_welc:
 
+            reply = update.message.message_id
+            cleanserv = sql.clean_service(chat.id)
+            # Clean service welcome
+            if cleanserv:
+                try:
+                    dispatcher.bot.delete_message(chat.id, update.message.message_id)
+                except BadRequest:
+                    pass
+                reply = False
+
             # Give the owner a special welcome
             if new_mem.id == OWNER_ID:
                 update.effective_message.reply_text(
-                    "Oh hi, my creator.", reply_to_message_id=reply
+                    "Oh, Genos? Let's get this moving.", reply_to_message_id=reply
                 )
                 welcome_log = (
                     f"{html.escape(chat.title)}\n"
                     f"#USER_JOINED\n"
-                    f"Bot Owner just joined the chat"
+                    f"Bot Owner just joined the group"
                 )
                 continue
 
             # Welcome Devs
             elif new_mem.id in DEV_USERS:
                 update.effective_message.reply_text(
-                    "Whoa! A member of the Eagle Union just joined!",
+                    "Be cool! A member of the Heroes Association just joined.",
                     reply_to_message_id=reply,
+                )
+                welcome_log = (
+                    f"{html.escape(chat.title)}\n"
+                    f"#USER_JOINED\n"
+                    f"Bot Dev just joined the group"
                 )
                 continue
 
             # Welcome Sudos
-            elif new_mem.id in SUDO_USERS:
+            elif new_mem.id in DRAGONS:
                 update.effective_message.reply_text(
-                    "Huh! A Royal Nation just joined! Stay Alert!",
+                    "Whoa! A Dragon disaster just joined! Stay Alert!",
                     reply_to_message_id=reply,
+                )
+                welcome_log = (
+                    f"{html.escape(chat.title)}\n"
+                    f"#USER_JOINED\n"
+                    f"Bot Sudo just joined the group"
                 )
                 continue
 
             # Welcome Support
-            elif new_mem.id in SUPPORT_USERS:
+            elif new_mem.id in DEMONS:
                 update.effective_message.reply_text(
-                    "Huh! Someone with a Sakura Nation level just joined!",
+                    "Huh! Someone with a Demon disaster level just joined!",
                     reply_to_message_id=reply,
+                )
+                welcome_log = (
+                    f"{html.escape(chat.title)}\n"
+                    f"#USER_JOINED\n"
+                    f"Bot Support just joined the group"
                 )
                 continue
 
             # Welcome Whitelisted
-            elif new_mem.id in SARDEGNA_USERS:
+            elif new_mem.id in TIGERS:
                 update.effective_message.reply_text(
-                    "Oof! A Sadegna Nation just joined!", reply_to_message_id=reply
+                    "Roar! A Tiger disaster just joined!", reply_to_message_id=reply
+                )
+                welcome_log = (
+                    f"{html.escape(chat.title)}\n"
+                    f"#USER_JOINED\n"
+                    f"A whitelisted user joined the chat"
                 )
                 continue
 
-            # Welcome SARDEGNA_USERS
-            elif new_mem.id in WHITELIST_USERS:
+            # Welcome Tigers
+            elif new_mem.id in WOLVES:
                 update.effective_message.reply_text(
-                    "Oof! A Neptuia Nation just joined!", reply_to_message_id=reply
+                    "Awoo! A Wolf disaster just joined!", reply_to_message_id=reply
+                )
+                welcome_log = (
+                    f"{html.escape(chat.title)}\n"
+                    f"#USER_JOINED\n"
+                    f"A whitelisted user joined the chat"
                 )
                 continue
 
             # Welcome yourself
             elif new_mem.id == bot.id:
+                creator = None
+                if not GreysonBot.ALLOW_CHATS:
+                    with suppress(BadRequest):
+                         update.effective_message.reply_text(f"Groups are disabled for {bot.first_name}, I'm outta here.")
+                    bot.leave_chat(update.effective_chat.id)
+                    return
+                for x in bot.bot.get_chat_administrators(update.effective_chat.id):
+                    if x.status == "creator":
+                        creator = x.user
+                        break
+                if creator:
+                    bot.send_message(
+                        JOIN_LOGGER,
+                        "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>\n<b>Creator:</b> <code>{}</code>".format(
+                            html.escape(chat.title), chat.id, html.escape(creator)
+                        ),
+                        parse_mode=ParseMode.HTML,
+                    )
+                else:
+                    bot.send_message(
+                        JOIN_LOGGER,
+                        "#NEW_GROUP\n<b>Group name:</b> {}\n<b>ID:</b> <code>{}</code>".format(
+                            html.escape(chat.title), chat.id
+                        ),
+                        parse_mode=ParseMode.HTML,
+                    )
                 update.effective_message.reply_text(
-                    "Thanks for adding me! Join @YorkTownEagleUnion for support.",
-                    reply_to_message_id=reply,
+                    "Watashi ga kita!", reply_to_message_id=reply
                 )
                 continue
 
