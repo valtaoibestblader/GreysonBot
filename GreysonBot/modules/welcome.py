@@ -7,7 +7,7 @@ from io import BytesIO
 import GreysonBot.modules.sql.welcome_sql as sql
 from GreysonBot import (
     DEV_USERS,
-    lOGGER,
+    LOGGER,
     OWNER_ID,
     DRAGONS,
     DEMONS,
