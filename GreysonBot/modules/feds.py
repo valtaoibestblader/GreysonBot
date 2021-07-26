@@ -44,7 +44,6 @@ import GreysonBot.modules.sql.feds_sql as sql
 from GreysonBot.modules.helper_funcs.alternate import (
     send_message,
     typing_action,
-    send_action,
 )
 from GreysonBot.modules.helper_funcs.decorators import kigcmd, kigcallback
 
