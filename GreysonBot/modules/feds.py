@@ -58,7 +58,7 @@ from telegram.utils.helpers import mention_html, mention_markdown
 #
 # Total spended for making this features is 68+ hours
 
-log.info("Original federation module by MrYacha, reworked by Mizukito Akito (@peaktogoo) on Telegram.")
+LOGGER.info("Original federation module by MrYacha, reworked by Mizukito Akito (@peaktogoo) on Telegram.")
 
 # TODO: Fix Loads of code duplication
 
