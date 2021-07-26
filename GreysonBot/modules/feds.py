@@ -29,8 +29,8 @@ from GreysonBot import (
     GBAN_LOGS,
     log,
 )
-from tg_bot.modules.helper_funcs.chat_status import is_user_admin
-from tg_bot.modules.helper_funcs.extraction import (
+from GreysonBot.modules.helper_funcs.chat_status import is_user_admin
+from GreysonBot.modules.helper_funcs.extraction import (
     extract_user,
     extract_unt_fedban,
     extract_user_fban,
