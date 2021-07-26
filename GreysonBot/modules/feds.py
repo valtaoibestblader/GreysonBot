@@ -90,9 +90,8 @@ UNFBAN_ERRORS = {
 }
 
 
-@typing_action
-@kigcmd(command='newfed')
-def new_fed(update, context):
+@run_async
+def new_fed(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
     message = update.effective_message
@@ -115,7 +114,7 @@ def new_fed(update, context):
         x = sql.new_fed(user.id, fed_name, fed_id)
         if not x:
             update.effective_message.reply_text(
-                "Can't federate! Report in @YorkTownEagleUnion if the problem persists."
+                "Can't federate! Report in @GreysonChats if the problem persists."
             )
             return
 
@@ -143,15 +142,14 @@ def new_fed(update, context):
         )
 
 
-@typing_action
-@kigcmd(command='delfed', pass_args=True)
-def del_fed(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    args = context.args
+@run_async
+def del_fed(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
     if chat.type != "private":
         update.effective_message.reply_text(
-            "You can delete your federation in my PM, not in the group."
+            "Federations can only be deleted by privately messaging me."
         )
         return
     if args:
@@ -191,10 +189,11 @@ def del_fed(update, context):
     )
 
 
-@typing_action
-@kigcmd(command='chatfed', pass_args=True)
-def fed_chat(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
+@run_async
+def fed_chat(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
     fed_id = sql.get_fed_id(chat.id)
 
     user_id = update.effective_message.from_user.id
@@ -217,25 +216,24 @@ def fed_chat(update, context):
     update.effective_message.reply_text(text, parse_mode=ParseMode.HTML)
 
 
-@typing_action
-@kigcmd(command='joinfed', pass_args=True)
-def join_fed(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
+@run_async
+def join_fed(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM!",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
     message = update.effective_message
     administrators = chat.get_administrators()
     fed_id = sql.get_fed_id(chat.id)
-    args = context.args
 
-    if user.id in SUDO_USERS:
+    if user.id in DRAGONS:
         pass
     else:
         for admin in administrators:
@@ -279,16 +277,16 @@ def join_fed(update, context):
         )
 
 
-@typing_action
-@kigcmd(command='leavefed')
-def leave_fed(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
+@run_async
+def leave_fed(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our PM!",
         )
         return
 
@@ -321,18 +319,17 @@ def leave_fed(update, context):
         update.effective_message.reply_text("Only group creators can use this command!")
 
 
-@typing_action
-@kigcmd(command='fpromote', pass_args=True)
-def user_join_fed(update, context):
+@run_async
+def user_join_fed(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
     chat = update.effective_chat
     user = update.effective_user
     msg = update.effective_message
-    args = context.args
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -386,17 +383,16 @@ def user_join_fed(update, context):
         update.effective_message.reply_text("Only federation owners can do this!")
 
 
-@typing_action
-@kigcmd(command='fdemote', pass_args=True)
-def user_demote_fed(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    args = context.args
+@run_async
+def user_demote_fed(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -447,20 +443,19 @@ def user_demote_fed(update, context):
         return
 
 
-@typing_action
-@kigcmd(command='fedinfo', pass_args=True)
-def fed_info(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    args = context.args
+@run_async
+def fed_info(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
     if args:
         fed_id = args[0]
+        info = sql.get_fed_info(fed_id)
     else:
         fed_id = sql.get_fed_id(chat.id)
         if not fed_id:
             send_message(
-                update.effective_message,
-                "This group is not in any federation!",
+                update.effective_message, "This group is not in any federation!"
             )
             return
     info = sql.get_fed_info(fed_id)
@@ -496,18 +491,16 @@ def fed_info(update, context):
     update.effective_message.reply_text(text, parse_mode=ParseMode.HTML)
 
 
-@typing_action
-@kigcmd(command='fedadmins', pass_args=True)
-def fed_admin(update, context):
-
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    args = context.args
+@run_async
+def fed_admin(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -547,18 +540,16 @@ def fed_admin(update, context):
     update.effective_message.reply_text(text, parse_mode=ParseMode.HTML)
 
 
-@typing_action
-@kigcmd(command=['fban', 'fedban'], pass_args=True)
-def fed_ban(update, context):  # sourcery no-metrics
-
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    args = context.args
+@run_async
+def fed_ban(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -602,19 +593,23 @@ def fed_ban(update, context):  # sourcery no-metrics
         return
 
     if user_id == OWNER_ID:
-        message.reply_text("That's a very STUPID idea!")
+        message.reply_text("Disaster level God cannot be fed banned!")
         return
 
-    if int(user_id) in SUDO_USERS:
-        message.reply_text("I will not ban a Royal Nation")
+    if int(user_id) in DRAGONS:
+        message.reply_text("Dragons cannot be fed banned!")
         return
 
-    if int(user_id) in WHITELIST_USERS:
-        message.reply_text("This person can't be fbanned!")
+    if int(user_id) in TIGERS:
+        message.reply_text("Tigers cannot be fed banned!")
         return
 
-    if int(user_id) in (777000, 1087968824):
-        message.reply_text("I'm not fbanning Telegram bots.")
+    if int(user_id) in WOLVES:
+        message.reply_text("Wolves cannot be fed banned!")
+        return
+
+    if user_id in [777000, 1087968824]:
+        message.reply_text("Fool! You can't attack Telegram's native tech!")
         return
 
     try:
@@ -966,18 +961,17 @@ def fed_ban(update, context):  # sourcery no-metrics
         )
 
 
-@typing_action
-@kigcmd(command=['unfban', 'rmfedban'], pass_args=True)
-def unfban(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    message = update.effective_message  # type: Optional[Message]
-    args = context.args
+@run_async
+def unfban(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
+    message = update.effective_message
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -1192,17 +1186,16 @@ def unfban(update, context):
 	"""
 
 
-@typing_action
-def set_frules(update, context):
-
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    args = context.args
+@run_async
+def set_frules(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -1250,16 +1243,15 @@ def set_frules(update, context):
         update.effective_message.reply_text("Please write rules to set it up!")
 
 
-@typing_action
-@kigcmd(command='frules', pass_args=True)
-def get_frules(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    args = context.args
+@run_async
+def get_frules(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -1274,18 +1266,17 @@ def get_frules(update, context):
     update.effective_message.reply_text(text, parse_mode=ParseMode.MARKDOWN)
 
 
-@typing_action
-@kigcmd(command='fbroadcast', pass_args=True)
-def fed_broadcast(update, context):
-    msg = update.effective_message  # type: Optional[Message]
-    user = update.effective_user  # type: Optional[User]
-    chat = update.effective_chat  # type: Optional[Chat]
-    args = context.args
+@run_async
+def fed_broadcast(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    msg = update.effective_message
+    user = update.effective_user
+    chat = update.effective_chat
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -1334,18 +1325,16 @@ def fed_broadcast(update, context):
         update.effective_message.reply_text(send_text)
 
 
-@send_action(ChatAction.UPLOAD_DOCUMENT)
-@kigcmd(command='fbanlist', pass_args=True, pass_chat_data=True)
-def fed_ban_list(update, context):  # sourcery no-metrics
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    args = context.args
-    chat_data = context.chat_data
+@run_async
+def fed_ban_list(update: Update, context: CallbackContext):
+    bot, args, chat_data = context.bot, context.args, context.chat_data
+    chat = update.effective_chat
+    user = update.effective_user
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -1390,9 +1379,9 @@ def fed_ban_list(update, context):  # sourcery no-metrics
                     )
                     return
                 else:
-                    if user.id not in SUDO_USERS:
+                    if user.id not in DRAGONS:
                         put_chat(chat.id, new_jam, chat_data)
-            elif user.id not in SUDO_USERS:
+            elif user.id not in DRAGONS:
                 put_chat(chat.id, new_jam, chat_data)
             backups = ""
             for users in getfban:
@@ -1433,9 +1422,9 @@ def fed_ban_list(update, context):  # sourcery no-metrics
                     )
                     return
                 else:
-                    if user.id not in SUDO_USERS:
+                    if user.id not in DRAGONS:
                         put_chat(chat.id, new_jam, chat_data)
-            elif user.id not in SUDO_USERS:
+            elif user.id not in DRAGONS:
                 put_chat(chat.id, new_jam, chat_data)
             backups = "id,firstname,lastname,username,reason\n"
             for users in getfban:
@@ -1497,7 +1486,7 @@ def fed_ban_list(update, context):  # sourcery no-metrics
                 )
                 return
             else:
-                if user.id not in SUDO_USERS:
+                if user.id not in DRAGONS:
                     put_chat(chat.id, new_jam, chat_data)
         elif user.id not in SUDO_USERS:
             put_chat(chat.id, new_jam, chat_data)
@@ -1514,13 +1503,12 @@ def fed_ban_list(update, context):  # sourcery no-metrics
             )
 
 
-@typing_action
-@kigcmd(command='fednotif', pass_args=True)
-def fed_notif(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    msg = update.effective_message  # type: Optional[Message]
-    args = context.args
+@run_async
+def fed_notif(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
+    msg = update.effective_message
     fed_id = sql.get_fed_id(chat.id)
 
     if not fed_id:
@@ -1550,17 +1538,16 @@ def fed_notif(update, context):
         )
 
 
-@typing_action
-@kigcmd(command='fedchats', pass_args=True)
-def fed_chats(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    args = context.args
+@run_async
+def fed_chats(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -1615,18 +1602,17 @@ def fed_chats(update, context):
             )
 
 
-@typing_action
-@kigcmd(command='importfbans', pass_args=True, pass_chat_data=True)
-def fed_import_bans(update, context):  # sourcery no-metrics
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    msg = update.effective_message  # type: Optional[Message]
-    chat_data = context.chat_data
+@run_async
+def fed_import_bans(update: Update, context: CallbackContext):
+    bot, chat_data = context.bot, context.chat_data
+    chat = update.effective_chat
+    user = update.effective_user
+    msg = update.effective_message
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -1838,9 +1824,10 @@ def fed_import_bans(update, context):  # sourcery no-metrics
         send_message(update.effective_message, text)
 
 
-@kigcallback(pattern=r"rmfed_")
-def del_fed_button(update, context):
+@run_async
+def del_fed_button(update: Update, context: CallbackContext):
     query = update.callback_query
+    userid = query.message.chat.id
     fed_id = query.data.split("_")[1]
 
     if fed_id == "cancel":
@@ -1859,12 +1846,12 @@ def del_fed_button(update, context):
             )
 
 
-@typing_action
-@kigcmd(command='fbanstat', pass_args=True)
-def fed_stat_user(update, context):  # sourcery no-metrics
-    user = update.effective_user  # type: Optional[User]
-    msg = update.effective_message  # type: Optional[Message]
-    args = context.args
+@run_async
+def fed_stat_user(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
+    msg = update.effective_message
 
     if args:
         if args[0].isdigit():
@@ -1968,17 +1955,17 @@ def fed_stat_user(update, context):  # sourcery no-metrics
         )
 
 
-@typing_action
-@kigcmd(command='setfedlog', pass_args=True)
-def set_fed_log(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
+@run_async
+def set_fed_log(update: Update, context: CallbackContext):
     args = context.args
+    chat = update.effective_chat
+    user = update.effective_user
+    msg = update.effective_message
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -2010,18 +1997,17 @@ def set_fed_log(update, context):
         )
 
 
-@typing_action
-@kigcmd(command='unsetfedlog', pass_args=True)
-def unset_fed_log(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    msg = update.effective_message  # type: Optional[Message]
+@run_async
+def unset_fed_log(update: Update, context: CallbackContext):
     args = context.args
+    chat = update.effective_chat
+    user = update.effective_user
+    msg = update.effective_message
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -2053,18 +2039,17 @@ def unset_fed_log(update, context):
         )
 
 
-@typing_action
-@kigcmd('subfed', pass_args=True)
-def subs_feds(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    msg = update.effective_message  # type: Optional[Message]
-    args = context.args
+@run_async
+def subs_feds(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
+    msg = update.effective_message
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -2120,18 +2105,17 @@ def subs_feds(update, context):
         )
 
 
-@typing_action
-@kigcmd(command='unsubfed', pass_args=True)
-def unsubs_feds(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    msg = update.effective_message  # type: Optional[Message]
-    args = context.args
+@run_async
+def unsubs_feds(update: Update, context: CallbackContext):
+    bot, args = context.bot, context.args
+    chat = update.effective_chat
+    user = update.effective_user
+    msg = update.effective_message
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -2187,18 +2171,17 @@ def unsubs_feds(update, context):
         )
 
 
-@typing_action
-@kigcmd(command='fedsubs', pass_args=True)
-def get_myfedsubs(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    msg = update.effective_message  # type: Optional[Message]
+@run_async
+def get_myfedsubs(update: Update, context: CallbackContext):
     args = context.args
+    chat = update.effective_chat
+    user = update.effective_user
+    msg = update.effective_message
 
     if chat.type == "private":
         send_message(
             update.effective_message,
-            "This command is specific to the group, not to the PM! ",
+            "This command is specific to the group, not to our pm!",
         )
         return
 
@@ -2236,13 +2219,11 @@ def get_myfedsubs(update, context):
         send_message(update.effective_message, listfed, parse_mode="markdown")
 
 
-@typing_action
-@kigcmd(command='myfeds', pass_args=True)
-def get_myfeds_list(update, context):
-    chat = update.effective_chat  # type: Optional[Chat]
-    user = update.effective_user  # type: Optional[User]
-    msg = update.effective_message  # type: Optional[Message]
-    args = context.args
+@run_async
+def get_myfeds_list(update: Update, context: CallbackContext):
+    chat = update.effective_chat
+    user = update.effective_user
+    msg = update.effective_message
 
     fedowner = sql.get_user_owner_fed_full(user.id)
     if fedowner:
@@ -2385,7 +2366,7 @@ def fed_user_help(update: Update, context: CallbackContext):
     )
 
 
-@kigcallback(pattern=r"fed_help_")
+@run_async(pattern=r"fed_help_")
 def fed_help(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
