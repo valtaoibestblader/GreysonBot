@@ -2428,27 +2428,6 @@ def fed_user_help(update: Update, context: CallbackContext):
     )
 
 
-@kigcallback(pattern=r"fed_help_")
-def fed_help(update: Update, context: CallbackContext):
-    query = update.callback_query
-    bot = context.bot
-    help_info = query.data.split("fed_help_")[1]
-    if help_info == "owner":
-        help_text = gs(update.effective_chat.id, "FED_OWNER_HELP")
-    elif help_info == "admin":
-        help_text = gs(update.effective_chat.id, "FED_ADMIN_HELP")
-    elif help_info == "user":
-        help_text = gs(update.effective_chat.id, "FED_USER_HELP") 
-    query.message.edit_text(
-        text=help_text,
-        parse_mode=ParseMode.MARKDOWN,
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton(text="Back", callback_data=f"help_module({__mod_name__.lower()})"),
-            InlineKeyboardButton(text='Report Error', url='https://t.me/YorkTownEagleUnion')]]
-        ),
-    )
-    bot.answer_callback_query(query.id)
-
 
 def get_help(chat):
     return [gs(chat, "feds_help"),
