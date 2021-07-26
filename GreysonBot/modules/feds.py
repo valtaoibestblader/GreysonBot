@@ -45,7 +45,7 @@ from GreysonBot.modules.helper_funcs.alternate import (
     send_message,
     typing_action,
 )
-from GreysonBot.modules.helper_funcs.decorators import kigcmd, kigcallback
+from telegram.utils.helpers import mention_html, mention_markdown
 
 # Hello bot owner, I spent many hours of my life for feds, Please don't remove this if you still respect MrYacha and peaktogoo and AyraHikari too
 # Federation by MrYacha 2018-2019
