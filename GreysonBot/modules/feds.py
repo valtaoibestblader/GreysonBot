@@ -2428,7 +2428,7 @@ def fed_user_help(update: Update, context: CallbackContext):
     )
 
 
-@run_async(pattern=r"fed_help_")
+@kigcallback(pattern=r"fed_help_")
 def fed_help(update: Update, context: CallbackContext):
     query = update.callback_query
     bot = context.bot
