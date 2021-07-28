@@ -582,7 +582,7 @@ def Greyson_guide_callback(update, context):
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❔ Help",callback_data="help_back"),InlineKeyboardButton(text="🔙 Back",callback_data="guidemenu_setguide")]]),
         )
-    elif query.data == "guidemenu_spamprot":
+    elif query.data == "aboutmanu_spamprot":
         query.message.edit_text(
             text="* ｢ Anti-Spam Settings 」*"
                  "\n- /antispam <on/off/yes/no>: Change antispam security settings in the group, or return your current settings(when no arguments)."
@@ -604,8 +604,8 @@ def Greyson_guide_callback(update, context):
                  "\n- /warn <userhandle>: Warns a user. After 3 warns, the user will be banned from the group. Can also be used as a reply."
                  "\n- /strongwarn <on/yes/off/no>: If set to on, exceeding the warn limit will result in a ban. Else, will just kick."
                  "\n_If you're looking for a way to automatically warn users when they say certain things, use the /addwarn command._"
-                 "\n\n- /welcomemute <off/soft/strong/captcha>: All users that join, get muted."
-                 "\n A button gets added to the welcome message for them to unmute themselves. This proves they aren't a bot! *soft* - restricts users ability to post media for 24 hours. *strong* - mutes on join until they prove they're not bots. *captcha* - with help of welcomemute captcha users have to solve the specific maths captcha to prove they are human .,
+                 "\n\n- /welcomemute <off/soft/strong>: All users that join, get muted"
+                 "\n_ A button gets added to the welcome message for them to unmute themselves. This proves they aren't a bot! soft - restricts users ability to post media for 24 hours. strong - mutes on join until they prove they're not bots._",
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❔ Help",callback_data="help_back"),InlineKeyboardButton(text="🔙 Back",callback_data="guidemenu_setguide")]]),
         )
