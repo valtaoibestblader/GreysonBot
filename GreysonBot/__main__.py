@@ -926,10 +926,11 @@ def main():
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
-    guide_callback_handler = CallbackQueryHandler(greyson_guide_callback, pattern=r"guidemenu_")
-
     about_callback_handler = CallbackQueryHandler(greyson_about_callback, pattern=r"greyson_")
     source_callback_handler = CallbackQueryHandler(Support_about_callback, pattern=r"support_")
+    guide_callback_handler = CallbackQueryHandler(
+        greyson_guide_callback, pattern=r"guidemenu_"
+    )
     tut_callback_handler = CallbackQueryHandler(
         Greyson_tut_callback, pattern=r"tutmanu_"
     )
