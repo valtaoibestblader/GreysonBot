@@ -516,8 +516,8 @@ def Greyson_guide_callback(update, context):
         query.message.edit_text(
             text=f"Hi again! I'am a full-fledged group management bot built to help you manage your group easily \n"
                  f"\n\nI can do lot of stuff, some of them are: \n • Restrict users who flood your chat using my *anti-flood* module."
-                 f"\n\n • Safeguard your group with the advanced and handy *Antispam system* ."
-                 f"\n\n • Greet users with media + text and buttons, with proper formatting. \n • Save notes and filters with proper formatting and reply markup . \n"
+                 f"\n • Safeguard your group with the advanced and handy *Antispam system* ."
+                 f"\n • Greet users with media + text and buttons, with proper formatting. \n • Save notes and filters with proper formatting and reply markup . \n"
                  f"\n\n*Note:*I need to be promoted with proper admin permissions to fuction properly. \n\nCheck *Setup Guide* to learn on setting up the bot and on *help* to learn more.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
