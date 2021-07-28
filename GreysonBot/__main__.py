@@ -96,7 +96,7 @@ buttons = [
             text="➕️ Add Grayson to chat!  ➕️", url="t.me/MrGreysonBot?startgroup=true"),
     ],
     [
-        InlineKeyboardButton(text="ℹ️ About", callback_data="greyson_"),
+        InlineKeyboardButton(text="📚 Guide 📚", callback_data="guidemenu_"),
         InlineKeyboardButton(text="⚒️ Support 🛠", callback_data="support_"),
     ],
     [
@@ -260,7 +260,7 @@ def send_start(update, context):
     first_name = update.effective_user.first_name
     text = PM_START_TEXT
     keyboard = [[InlineKeyboardButton(text="➕ Add me ➕",url="t.me/MrGreysonBot?startgroup=true"),InlineKeyboardButton(text="⚙️ Help ⚙️",callback_data="help_back")]]
-    keyboard += [[InlineKeyboardButton(text="🌐 Connect 🌐", callback_data="main_connect"),InlineKeyboardButton(text="📱Tutorial📱",callback_data="tutmanu_")]]
+    keyboard += [[InlineKeyboardButton(text="📖 Guide 📖", callback_data="guidemenu_"),InlineKeyboardButton(text="📱Tutorial📱",callback_data="tutmanu_")]]
 
     update.effective_message.reply_text(
         PM_START_TEXT,
@@ -407,24 +407,23 @@ def greyson_about_callback(update, context):
 *And finally special thanks of gratitude to all my users who relied on me for managing their groups, I hope you will always like me; My developers are constantly working to improve me!*""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="Back 🔙", callback_data="greyson_back")
-                 ]
-                ]
-            ),
-        )
-    elif query.data == "greyson_back":
-        query.message.edit_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
-        )
-
-
+            reply_markup=InlineKeyboardMarkup(                   
+                          [[
+                              InlineKeyboardButton(
+                              text="Updates Channel",
+                              url="http://t.me/GraysonNews"),
+                              InlineKeyboardButton(
+                              text="Support Chat",
+                              url="http://t.me/GreysonChats")
+                          ],
+                          [
+                              InlineKeyboardButton(
+                              text="Source",
+                              url="https://github.com/Kunal-Diwan/GreysonBot"),
+                              InlineKeyboardButton(
+                              text="Go Back",
+                              callback_data="guidemenu_")                  
+                          ]])) 
 @run_async
 def Greyson_tut_callback(update, context):
     query = update.callback_query
@@ -508,6 +507,128 @@ def Support_about_callback(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
                 disable_web_page_preview=False,
+        )
+
+@run_async
+def Greyson_guide_callback(update, context):
+    query = update.callback_query
+    if query.data == "guidemenu_":
+        query.message.edit_text(
+            text=f"Hi again! I'am a full-fledged group management bot built to help you manage your group easily \n"
+                 f"\n\nI can do lot of stuff, some of them are: \n • Restrict users who flood your chat using my *anti-flood* module."
+                 f"\n\n • Safeguard your group with the advanced and handy *Antispam system* ."
+                 f"\n\n • Greet users with media + text and buttons, with proper formatting. \n • Save notes and filters with proper formatting and reply markup . \n"
+                 f"\n\n*Note:*I need to be promoted with proper admin permissions to fuction properly. \n\nCheck *Setup Guide* to learn on setting up the bot and on *help* to learn more.",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                  [
+                    InlineKeyboardButton(text="Setup Guide", callback_data="guidemenu_setguide"),
+                    InlineKeyboardButton(text="T & C", callback_data="guidemenu_tac")
+                  ],
+                 [
+                    InlineKeyboardButton(text="About 🤖", callback_data="greyson_"),
+                    InlineKeyboardButton(text="❔ Help", callback_data="help_back")
+                  ],
+                 [
+                    InlineKeyboardButton(text="🔙 Back", callback_data="guidemenu_back")
+                 ] 
+                ]
+            ),
+        )
+    elif query.data == "guidemenu_back":
+        query.message.edit_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60, 
+            )
+        
+    elif query.data == "guidemenu_setguide":
+        query.message.edit_text(
+            text=f"* ｢ Setup Guide 」\n*"
+                 f"\nYou can add me to your group by clicking this [link](http://t.me/MrGreysonBot?startgroup=true) and selecting the chat. \nRead *Admin Permissions* and *Anti-spam* for basic info."
+                 f"\n\nRead Detailed Setup Guide to learn about setting up the bot in detail. (Recommended) .\nIf you need help with further instructions feel free to ask in @GreysonChats."
+                 f"",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup([[
+                InlineKeyboardButton(text="Admins Settings", callback_data="guidemenu_permis"),
+                InlineKeyboardButton(text="Anti Spam", callback_data="guidemenu_spamprot")],
+                [
+                InlineKeyboardButton(text="🔙 Back", callback_data="guidemenu_")]
+                                               ]),
+        )
+    elif query.data == "guidemenu_credit":
+        query.message.edit_text(
+            text=f"*{dispatcher.bot.first_name} is a powerful bot for managing groups with additional features.*"
+                 f"\n\nThanks to Paul for his [Marie Bot](http://github.com/PaulSonOfLars/tgbot) . \n\nBase of [Saitama](https://github.com/AnimeKaizoku/SaitamaRobot)."
+                 f"\n\n{dispatcher.bot.first_name}'s Licensed Under The GNU _(General Public License v3.0)_"
+                 f"\n\nIf any question about {dispatcher.bot.first_name}, \nLet us know at Support Chat.",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="☎️ Support",url="t.me/GreysonChats"),InlineKeyboardButton(text="🔙 Back",callback_data="guidemenu_tac")]]),
+        )
+    elif query.data == "guidemenu_permis":
+        query.message.edit_text(
+            text=f"<b> ｢ Admin Permissions 」</b>"
+                 f"\nTo avoid slowing down, {dispatcher.bot.first_name} caches admin rights for each user. This cache lasts about 10 minutes; this may change in the future. This means that if you promote a user manually (without using the /promote command), {dispatcher.bot.first_name} will only find out ~10 minutes later."
+                 f"\n\nIF you want to update them immediately, you can use the /admincache command,thta'll force {dispatcher.bot.first_name} to check who the admins are again and their permissions"
+                 f"\n\nIf you are getting a message saying:"
+                 f"\n<Code>You must be this chat administrator to perform this action!</code>"
+                 f"\nThis has nothing to do with {dispatcher.bot.first_name}'s rights; this is all about YOUR permissions as an admin. {dispatcher.bot.first_name} respects admin permissions; if you do not have the Ban Users permission as a telegram admin, you won't be able to ban users with {dispatcher.bot.first_name}. Similarly, to change {dispatcher.bot.first_name} settings, you need to have the Change group info permission."
+                 f"\n\nThe message very clearly says that you need these rights - <i>not {dispatcher.bot.first_name}.</i>",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❔ Help",callback_data="help_back"),InlineKeyboardButton(text="🔙 Back",callback_data="guidemenu_setguide")]]),
+        )
+    elif query.data == "guidemenu_spamprot":
+        query.message.edit_text(
+            text="* ｢ Anti-Spam Settings 」*"
+                 "\n- /antispam <on/off/yes/no>: Change antispam security settings in the group, or return your current settings(when no arguments)."
+                 "\n_This helps protect you and your groups by removing spam flooders as quickly as possible._"
+                 "\n\n- /setflood <int/'no'/'off'>: enables or disables flood control"
+                 "\n- /setfloodmode <ban/kick/mute/tban/tmute> <value>: Action to perform when user have exceeded flood limit. ban/kick/mute/tmute/tban"
+                 "\n_Antiflood allows you to take action on users that send more than x messages in a row. Exceeding the set flood will result in restricting that user._"
+                 "\n\n- /addblacklist <triggers>: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers."
+                 "\n- /blacklistmode <off/del/warn/ban/kick/mute/tban/tmute>: Action to perform when someone sends blacklisted words."
+                 "\n_Blacklists are used to stop certain triggers from being said in a group. Any time the trigger is mentioned, the message will immediately be deleted. A good combo is sometimes to pair this up with warn filters!_"
+                 "\n\n- /reports <on/off>: Change report setting, or view current status."
+                 "\n • If done in pm, toggles your status."
+                 "\n • If in chat, toggles that chat's status."
+                 "\n_If someone in your group thinks someone needs reporting, they now have an easy way to call all admins._"
+                 "\n\n- /lock <type>: Lock items of a certain type (not available in private)"
+                 "\n- /locktypes: Lists all possible locktypes"
+                 "\n_The locks module allows you to lock away some common items in the telegram world; the bot will automatically delete them!_"
+                 "\n\n- /addwarn <keyword> <reply message>: Sets a warning filter on a certain keyword. If you want your keyword to be a sentence, encompass it with quotes, as such: /addwarn \"very angry\" This is an angry user. "
+                 "\n- /warn <userhandle>: Warns a user. After 3 warns, the user will be banned from the group. Can also be used as a reply."
+                 "\n- /strongwarn <on/yes/off/no>: If set to on, exceeding the warn limit will result in a ban. Else, will just kick."
+                 "\n_If you're looking for a way to automatically warn users when they say certain things, use the /addwarn command._"
+                 "\n\n- /welcomemute <off/soft/strong/captcha>: All users that join, get muted."
+                 "\n A button gets added to the welcome message for them to unmute themselves. This proves they aren't a bot! *soft* - restricts users ability to post media for 24 hours. *strong* - mutes on join until they prove they're not bots. *captcha* - with help of welcomemute captcha users have to solve the specific maths captcha to prove they are human .,
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❔ Help",callback_data="help_back"),InlineKeyboardButton(text="🔙 Back",callback_data="guidemenu_setguide")]]),
+        )
+    elif query.data == "guidemenu_tac":
+        query.message.edit_text(
+            text=f"<b> ｢ Terms and Conditions 」</b>\n"
+                 f"\n<i>To Use This Bot, You Need To Read Terms and Conditions Carefully.</i>\n"
+                 f"\n✪ Watch your group, if someone \n  spamming your group, you can \n  use report feature from your \n  Telegram Client."
+                 f"\n✪ Make sure antiflood is enabled, so \n  nobody can flood/spam your group."
+                 f"\n✪ Do not spam commands, buttons, \n  or anything in bot PM, else you will \n  be <b>Gbanned</b>."
+                 f"\n✪ If you need to ask anything about \n  this bot, Go @{SUPPORT_CHAT}."
+                 f"\n✪ If you asking nonsense in Support \n  Chat, you will get warned/banned."
+                 f"\n✪ Sharing any files/videos others \n  than about bot in Support Chat is \n  prohibited."
+                 f"\n✪ Sharing NSFW in Support Chat,\n  will reward you GBAN \n  and reported to Telegram as well."
+                 f"\n\nFor any kind of help, related to this bot, Join @{SUPPORT_CHAT}."
+                 f"\n\n<i>Terms & Conditions will be changed anytime</i>\n",
+            parse_mode=ParseMode.HTML,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                  [
+                    InlineKeyboardButton(text="Credits", callback_data="guidemenu_credit"),
+                    InlineKeyboardButton(text="🔙 Back", callback_data="guidemenu_")
+                  ]])
         )
 
 @run_async
@@ -805,6 +926,8 @@ def main():
     settings_handler = CommandHandler("settings", get_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
+    guide_callback_handler = CallbackQueryHandler(greyson_guide_callback, pattern=r"guidemenu_")
+
     about_callback_handler = CallbackQueryHandler(greyson_about_callback, pattern=r"greyson_")
     source_callback_handler = CallbackQueryHandler(Support_about_callback, pattern=r"support_")
     tut_callback_handler = CallbackQueryHandler(
@@ -817,6 +940,7 @@ def main():
     # dispatcher.add_handler(test_handler)
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(help_handler)
+    dispatcher.add_handler(guide_callback_handler)
     dispatcher.add_handler(tut_callback_handler)
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(source_callback_handler)
