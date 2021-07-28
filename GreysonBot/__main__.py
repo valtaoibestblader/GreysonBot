@@ -608,7 +608,7 @@ def Greyson_guide_callback(update, context):
                  f"\n✪ If you need to ask anything about this bot, Go @{SUPPORT_CHAT}."
                  f"\n✪ If you asking nonsense in Support Chat, you will get warned/banned."
                  f"\n✪ Watch your group, if someone is spamming your group, you can use the report feature of your Telegram Client."
-                 f"\n✪ Sharing NSFW in Support Chat,\n  will reward you GBAN \n  and reported to Telegram as well."
+                 f"\n✪ Sharing NSFW in Support Chat, will reward you GBAN nd reported to Telegram as well."
                  f"\n\nFor any kind of help, related to this bot, Join @{SUPPORT_CHAT}."
                  f"\n\n<i>Terms & Conditions might changed anytime</i>\n",
             parse_mode=ParseMode.HTML,
