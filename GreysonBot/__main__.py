@@ -514,10 +514,10 @@ def Greyson_guide_callback(update, context):
     query = update.callback_query
     if query.data == "guidemenu_":
         query.message.edit_text(
-            text=f"Hi again! I'am a full-fledged group management bot built to help you manage your group easily \n"
+            text=f"Hi again! I'am a full-fledged group management bot built to help you manage your group easily ."
                  f"\n\nI can do lot of stuff, some of them are: \n • Restrict users who flood your chat using my *anti-flood* module."
                  f"\n • Safeguard your group with the advanced and handy *Antispam system* ."
-                 f"\n • Greet users with media + text and buttons, with proper formatting. \n • Save notes and filters with proper formatting and reply markup . \n"
+                 f"\n • Greet users with media + text and buttons, with proper formatting. \n • Save notes and filters with proper formatting and reply markup ."
                  f"\n\n*Note:*I need to be promoted with proper admin permissions to fuction properly. \n\nCheck *Setup Guide* to learn on setting up the bot and on *help* to learn more.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -582,7 +582,7 @@ def Greyson_guide_callback(update, context):
             parse_mode=ParseMode.HTML,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="❔ Help",callback_data="help_back"),InlineKeyboardButton(text="🔙 Back",callback_data="guidemenu_setguide")]]),
         )
-    elif query.data == "aboutmanu_spamprot":
+    elif query.data == "guidemenu_spamprot":
         query.message.edit_text(
             text="* ｢ Anti-Spam Settings 」*"
                  "\n- /antispam <on/off/yes/no>: Change antispam security settings in the group, or return your current settings(when no arguments)."
