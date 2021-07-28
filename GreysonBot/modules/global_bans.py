@@ -536,6 +536,17 @@ def __migrate__(old_chat_id, new_chat_id):
 def __chat_settings__(chat_id, user_id):
     return f"This chat is enforcing *gbans*: `{sql.does_chat_gban(chat_id)}`."
 
+__help__ = f"""
+*Admins only:*
+ • `/antispam <on/off/yes/no>`*:* Will toggle our antispam tech or return your current settings.
+
+Antispam, used by bot devs to ban spammers across all groups. This helps protect \
+you and your groups by removing spam flooders as quickly as possible.
+*Note:* Users can appeal gbans or report spammers at @{SUPPORT_CHAT}
+
+This also integrates @SpamRefiners, @Spamwatch and @SpamProtectionBot API to remove Spammers as much as possible from your chatroom!
+"""
+
 
 GBAN_HANDLER = CommandHandler("gban", gban)
 UNGBAN_HANDLER = CommandHandler("ungban", ungban)
