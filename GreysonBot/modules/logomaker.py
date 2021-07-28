@@ -153,7 +153,7 @@ file_helpo = file_help.replace("_", " ")
 
 __help__ = """
  ❍ /logo text :  Create your logo with your name
- ❍ /wlogo text :  Create your logo with your name
+ ❍ /wlogo text : Create your logo with stylish name
 
  """
 __mod_name__ = "Logo"
