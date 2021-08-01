@@ -1,4 +1,4 @@
-import importlib
+import importlib 
 import time
 import re
 from sys import argv
@@ -75,13 +75,15 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hello there, I am [Greyson](https://telegra.ph/file/83dbae46536c4f88a28b7.jpg) - I'm here to help you to manage your chats with ease. 
+Hello there, I am *Greyson* - I'm here to help you to manage your chats with ease. 
 
 ➡️ Just add me in your group as admin .
 
 Hit /help to know my commands .
 
-You can get my news everyday [here](t.me/GraysonNews) .
+You can get my news everyday at @GraysonNews .
+
+Use the /privacy command to view the privacy policy, and interact with your data.
 """
 G_START_TEXT = """
 Hello Greyson here , How can I help you ?
@@ -90,6 +92,9 @@ GREYSON_HOME_TEXT = """
 *Excellent!* \nNow the Bot is ready to use!\n\nUse /help to Know all modules and features
 `All commands can be used with / ? or !`
 """
+SOURCEG_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully open source .
+\nDon't forgot to fork 🍴 and star 🌟 the repo . \n\nCheck my source below 👇 \n⚙️ Source ⚙️ - [Click here](https://github.com/Kunal-Diwan/GreysonBot)"""
+
 buttons = [
     [
         InlineKeyboardButton(
@@ -129,8 +134,8 @@ GreysonG_IMG = "https://telegra.ph/file/83dbae46536c4f88a28b7.jpg"
 
 Greysontut_VID = "https://telegra.ph/file/f0df0d42c1d2a189d8c61.mp4"
 
-SOURCE_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully opensource . \n\nHere is my source below 👇
-⚙️ Source ⚙️ -  [Click here](https://github.com/Kunal-Diwan/GreysonBot) ."""
+SOURCE_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully open source .
+\nDon't forgot to fork 🍴 and star 🌟 the repo . \n\nCheck my source below 👇"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -157,7 +162,7 @@ for module_name in ALL_MODULES:
 
     # Chats to migrate on chat_migrated events
     if hasattr(imported_module, "__migrate__"):
-        MIGRATEABLE.append(imported_module)
+        MIGRATEABLE.append(imported_module) 
 
     if hasattr(imported_module, "__stats__"):
         STATS.append(imported_module)
@@ -836,7 +841,6 @@ def get_settings(update: Update, context: CallbackContext):
     else:
         send_settings(chat.id, user.id, True)
 
-
 @run_async
 def source(update: Update, context: CallbackContext):
     user = update.effective_message.from_user
@@ -844,7 +848,13 @@ def source(update: Update, context: CallbackContext):
     bot = context.bot
     if chat.type == "private":
         update.effective_message.reply_text(
-            SOURCE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
+            SOURCE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(
+                [
+                  [
+                    InlineKeyboardButton(text="↗️ Source ↗️", url="https://github.com/Kunal-Diwan/GreysonBot")
+                 ] 
+                ]
+            ),
         )
 
         if OWNER_ID != 1701601729 and MAINTAINER_LINK:
@@ -858,7 +868,7 @@ def source(update: Update, context: CallbackContext):
         try:
             bot.send_message(
                 user.id,
-                SOURCE_STRING,
+                SOURCEG_STRING,
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
             )
@@ -870,7 +880,6 @@ def source(update: Update, context: CallbackContext):
             update.effective_message.reply_text(
                 "Contact me in PM first to get source information."
             )
-
 
 def migrate_chats(update: Update, context: CallbackContext):
     msg = update.effective_message  # type: Optional[Message]
@@ -923,7 +932,7 @@ def main():
     tut_callback_handler = CallbackQueryHandler(
         Greyson_tut_callback, pattern=r"tutmanu_"
     )
-
+  
     source_handler = CommandHandler("source", source)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
