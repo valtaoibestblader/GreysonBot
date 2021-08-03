@@ -20,7 +20,7 @@
 </p>
 
 
-**Telegram best Group Management bot made by [python](https://python.org) with more functions and speciality. **
+**Telegram best Group Management bot made by [python](https://python.org) with more functions and speciality.**
 
 ## **Features :**
 - Modern
