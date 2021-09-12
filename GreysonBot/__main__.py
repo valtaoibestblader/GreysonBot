@@ -30,6 +30,7 @@ from GreysonBot.modules import ALL_MODULES
 from GreysonBot.modules.helper_funcs.chat_status import is_user_admin
 from GreysonBot.modules.helper_funcs.misc import paginate_modules
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
+from GreysonBot.modules.language import gs
 from telegram.error import (
     BadRequest,
     ChatMigrated,
@@ -237,11 +238,51 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            update.effective_message.reply_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
+            update.effective_message.edit_text(
+                text=gs(chat.id, "pm_start_text").format(
+                    escape_markdown(first_name),
+                    escape_markdown(context.bot.first_name),
+                    OWNER_ID,
+                ),
                 parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text=gs(chat.id, "support_chat_link_btn"),
+                                url=f"https://t.me/YorktownEagleUnion",
+                            ),
+                            InlineKeyboardButton(
+                                text=gs(chat.id, "updates_channel_link_btn"),
+                                url="https://t.me/KigyoUpdates",
+                            ),
+                            InlineKeyboardButton(
+                                text=gs(chat.id, "src_btn"),
+                                url="https://github.com/Dank-del/EnterpriseALRobot",
+                            ),
+                            
+                        ],
+
+                        [
+
+                            InlineKeyboardButton(
+                                text="Try inline",
+                                switch_inline_query_current_chat="",
+                            ),
+                            InlineKeyboardButton(
+                                text="Help",
+                                callback_data="help_back",
+                                ),
+                            InlineKeyboardButton(
+                                text=gs(chat.id, "add_bot_to_group_btn"),
+                                url="t.me/{}?startgroup=true".format(
+                                    context.bot.username
+                                ),
+                            ),
+                        ]
+                        
+                    ]
+                ),
             )
     else:
         update.effective_message.reply_photo(
