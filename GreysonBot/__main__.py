@@ -75,30 +75,30 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hello there, I am *Greyson* - I'm here to help you to manage your chats with ease. 
+Hello there, I am *Shizuka Minamoto* - I'm here to help you to manage your chats with ease. 
 
 ➡️ Just add me in your group as admin .
 
 Hit /help to know my commands .
 
-You can get my news everyday at @GraysonNews .
+You can get my news everyday at @zbotscreator .
 
 Use the /privacy command to view the privacy policy, and interact with your data.
 """
 G_START_TEXT = """
-Hello Greyson here , How can I help you ?
+Hello Shizuka Minamoto here , How can I help you ?
 """
 GREYSON_HOME_TEXT = """
 *Excellent!* \nNow the Bot is ready to use!\n\nUse /help to Know all modules and features
 `All commands can be used with / ? or !`
 """
-SOURCEG_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully open source .
-\nDon't forgot to fork 🍴 and star 🌟 the repo . \n\nCheck my source below 👇 \n⚙️ Source ⚙️ - [Click here](https://github.com/Kunal-Diwan/GreysonBot)"""
+SOURCEG_STRING = """Oh you want my channel link . I am built in python 3 , Using the python-telegram-bot library, and am fully open source .
+\nDon't forgot to join in my channel 🍴 and star 🌟 the link . \n\nCheck my channel below 👇 \n⚙️ Update ⚙️ - [Click here](https://t.me/Zbotscreator)"""
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ Add Grayson to chat!  ➕️", url="t.me/MrGreysonBot?startgroup=true"),
+            text="➕️ Add Shizuka Minamoto to chat!  ➕️", url="t.me/MrGreysonBot?startgroup=true"),
     ],
     [
         InlineKeyboardButton(text="📚 Guide 📚", callback_data="guidemenu_"),
@@ -119,7 +119,7 @@ videobuttons = [[InlineKeyboardButton(text="✅ Done ✅",
 
 HELP_STRINGS = """
 *Help*
-Hey! My name is Greyson . I am a group management bot, here to help you get around and keep the order in your groups!
+Hey! My name is Shizuka Minamoto . I am a group management bot, here to help you get around and keep the order in your groups!
 
 I have lots of handy features, such as flood control, a warning system, a note keeping system, and even predetermined replies on certain keywords.
 
