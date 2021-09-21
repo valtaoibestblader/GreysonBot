@@ -75,47 +75,48 @@ def get_readable_time(seconds: int) -> str:
 
 
 PM_START_TEXT = """
-Hello there, I am *Shizuka Minamoto* - I'm here to help you to manage your chats with ease. 
-
-➡️ Just add me in your group as admin .
-
-Hit /help to know my commands .
-
-You can get my news everyday at @zbotscreator .
-
-Use the /privacy command to view the privacy policy, and interact with your data.
+`𝐇𝐄𝐘 𝐓𝐇𝐄𝐑𝐄!` [🧑](https://telegra.ph/file/6f15beea07d35a0792f1f.jpg) 
+`𝐌𝐘 𝐍𝐀𝐌𝐄 𝐈𝐒` *Shizuka Minamoto*`
+`𝐈 𝐀𝐌 𝐀 𝐁𝐄𝐘𝐁𝐋𝐀𝐃𝐄 𝐓𝐇𝐄𝐌𝐄𝐃 𝐆𝐑𝐎𝐔𝐏 𝐌𝐀𝐍𝐀𝐆𝐄𝐌𝐄𝐍𝐓 𝐁𝐎𝐓.`
+𝐌𝐀𝐍𝐀𝐆𝐄𝐃 𝐁𝐘 𝐏𝐈𝐆𝐀𝐒𝐔𝐒 𝐔𝐏𝐃𝐀𝐓𝐄 𝐅𝐎𝐑 𝐘𝐎𝐔𝐑 𝐓𝐄𝐋𝐄𝐆𝐑𝐀𝐌 𝐆𝐑𝐎𝐔𝐏
+𝐉𝐎𝐈𝐍 @𝐏𝐈𝐆𝐀𝐒𝐔𝐒𝐔𝐏𝐃𝐀𝐓𝐄𝐒 𝐀𝐍𝐃 @𝐏𝐈𝐆𝐀𝐒𝐔𝐒𝐒𝐔𝐏𝐏𝐎𝐑𝐓
+𝐘𝐎𝐔 𝐂𝐀𝐍 𝐅𝐈𝐍𝐃 𝐌𝐘 𝐋𝐈𝐒𝐓 𝐎𝐅 𝐀𝐕𝐀𝐈𝐋𝐀𝐁𝐋𝐄 𝐂𝐎𝐌𝐌𝐀𝐍𝐃𝐒 𝐖𝐈𝐓𝐇` *./help*   
 """
-G_START_TEXT = """
-Hello Shizuka Minamoto here , How can I help you ?
-"""
-GREYSON_HOME_TEXT = """
-*Excellent!* \nNow the Bot is ready to use!\n\nUse /help to Know all modules and features
-`All commands can be used with / ? or !`
-"""
-SOURCEG_STRING = """Oh you want my channel link . I am built in python 3 , Using the python-telegram-bot library, and am fully open source .
-\nDon't forgot to join in my channel 🍴 and star 🌟 the link . \n\nCheck my channel below 👇 \n⚙️ Update ⚙️ - [Click here](https://t.me/Zbotscreator)"""
 
 buttons = [
     [
         InlineKeyboardButton(
-            text="➕️ Add Shizuka Minamoto to chat!  ➕️", url="t.me/MrGreysonBot?startgroup=true"),
-    ],
-    [
-        InlineKeyboardButton(text="📚 Guide 📚", callback_data="guidemenu_"),
-        InlineKeyboardButton(text="⚒️ Support 🛠", callback_data="support_"),
+            text="༒ 𝙰𝙳𝙳 Shizuka Minamoto 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 ༒",url="t.me/Shizuka_Minamotos_Robot?startgroup=true"
+        ),
     ],
     [
         InlineKeyboardButton(
-            text="🎥 Configuration Tutorial 🎥", callback_data="tutmanu_"
+          text="༺ 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂 & 𝙷𝙴𝙻𝙿 ༻", callback_data="help_back"
         ),
+    ],
+    [
+        InlineKeyboardButton(
+          text="༄ 𝚄𝙿𝙳𝙰𝚃𝙴 𝙲𝙷𝙰𝙽𝙽𝙴𝙻 ༄", url="https://t.me/Zbotscreator"
+        ),
+      
+        InlineKeyboardButton(
+          text="★ 𝙲𝙷𝙴𝙲𝙺 𝙼𝚈 𝙵𝚁𝙸𝙴𝙽𝙳 ★", url="http://t.me/VALTAOITHEBOT"
+        ),
+    ],
+         
+    [
+       InlineKeyboardButton(
+           text="✫ 𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙲𝙷𝙰𝚃 ✫", url="https://t.me/zbotschat"
+         ),
+    ],
+    [
+       InlineKeyboardButton(
+           text="彡 𝙼𝚈 𝙾𝚆𝙽𝙴𝚁 彡", url="https://t.me/Rohith_no_1"
+        ),
+     
     ],
 ]
 
-gbuttons = [[InlineKeyboardButton(text="⚙️ help ⚙️",
-                                  url="http://t.me/MrGreysonBot?start=help")]]
-
-videobuttons = [[InlineKeyboardButton(text="✅ Done ✅",
-                                  callback_data="tutmanu_home")]]
 
 HELP_STRINGS = """
 *Help*
@@ -130,12 +131,12 @@ I have lots of handy features, such as flood control, a warning system, a note k
 
 If you have any bugs or questions on how to use me head to @GreysonChats. \n\nAll commands can be used with the following: / !\n\nAnd the following :-"""
 
-GreysonG_IMG = "https://telegra.ph/file/83dbae46536c4f88a28b7.jpg"
+GreysonG_IMG = "https://telegra.ph/file/6f15beea07d35a0792f1f.jpg"
 
-Greysontut_VID = "https://telegra.ph/file/f0df0d42c1d2a189d8c61.mp4"
+Greysontut_VID = "https://telegra.ph/file/5b3991ed5501cea2856e6.jpg"
 
-SOURCE_STRING = """Oh you want my source . I am built in python 3 , Using the python-telegram-bot library, and am fully open source .
-\nDon't forgot to fork 🍴 and star 🌟 the repo . \n\nCheck my source below 👇"""
+SOURCE_STRING = """Oh you want my channel link . I am built in python 3 , Using the python-telegram-bot library, and am fully made by Z bots .
+\nDon't forgot to join my channel🍴 and star 🌟 the link . \n\nCheck my channel below 👇"""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -264,7 +265,7 @@ def send_start(update, context):
     chat = update.effective_chat  # type: Optional[Chat]
     first_name = update.effective_user.first_name
     text = PM_START_TEXT
-    keyboard = [[InlineKeyboardButton(text="➕ Add me ➕",url="t.me/MrGreysonBot?startgroup=true"),InlineKeyboardButton(text="⚙️ Help ⚙️",callback_data="help_back")]]
+    keyboard = [[InlineKeyboardButton(text="➕ Add me ➕",url="t.me/Shizuka_Minamotos_Robot?startgroup=true"),InlineKeyboardButton(text="⚙️ Help ⚙️",callback_data="help_back")]]
     keyboard += [[InlineKeyboardButton(text="📖 Guide 📖", callback_data="guidemenu_"),InlineKeyboardButton(text="📱Tutorial📱",callback_data="tutmanu_")]]
 
     update.effective_message.reply_text(
@@ -403,12 +404,12 @@ def greyson_about_callback(update, context):
     query = update.callback_query
     if query.data == "greyson_":
         query.message.edit_text(
-            text=""" My name is *Greyson* , I have been written in python3 using mixed libraries. I'm online since 14 June 2021 and is constantly updated! \n
+            text=""" My name is *Shizuka Minamoto* , I have been written in python3 using mixed libraries. I'm online since 14 June 2021 and is constantly updated! \n
 *Bot Version*: _3.1_ \n
 *Bot Admins* : 
-• @kunaldiwan - bot creator and main developer 
-• @Grizzypal - server manager and developer
-• @Jimmioooo - support director \n
+• @Rohith_no_1 - bot creator and main developer 
+• @Crimsonflashs - server manager and developer
+• @Im_so_much_worse_than_you_think - support director \n
 *And finally special thanks of gratitude to all my users who relied on me for managing their groups, I hope you will always like me; My developers are constantly working to improve me!*""",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -416,15 +417,15 @@ def greyson_about_callback(update, context):
                           [[
                               InlineKeyboardButton(
                               text="Updates Channel",
-                              url="http://t.me/GraysonNews"),
+                              url="https://t.me/Zbotscreator"),
                               InlineKeyboardButton(
                               text="Support Chat",
-                              url="http://t.me/GreysonChats")
+                              url="https://t.me/zbotschat")
                           ],
                           [
                               InlineKeyboardButton(
-                              text="Source",
-                              url="https://github.com/Kunal-Diwan/GreysonBot"),
+                              text="Owner",
+                              url="https://t.me/Rohith_no_1"),
                               InlineKeyboardButton(
                               text="Go Back",
                               callback_data="guidemenu_")                  
@@ -434,15 +435,15 @@ def Greyson_tut_callback(update, context):
     query = update.callback_query
     if query.data == "tutmanu_":
         query.message.edit_text(
-            text=f"*Welcome to the Greyson configuration tutorial.* "
-            f"\n\n👇 The first thing to do is to *add Greyson to your group*! For doing that, press the under button and select your group, then press *Done* to continue the tutorial. 👇",
+            text=f"*Welcome to the Shizuka Minamoto configuration tutorial.* "
+            f"\n\n👇 The first thing to do is to *add Shizuka Minamoto to your group*! For doing that, press the under button and select your group, then press *Done* to continue the tutorial. 👇",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="➕️ Add Grayson to chat!  ➕️", url="t.me/MrGreysonBot?startgroup=true"
+                            text="➕️ Add Shizuka Minamoto to chat!  ➕️", url="t.me/Shizuka_Minamotos_Robot?startgroup=true"
                         )
                     ],
                     [InlineKeyboardButton(text="✅ Done ✅", callback_data="tutmanu_howto")],
@@ -454,7 +455,7 @@ def Greyson_tut_callback(update, context):
             text=f"* Ok, well done! *"
             f"\nNow for let me work correctly, you need to make me *Admin of your Group*! \n"
             f"\nTo do that, follow this easy steps:\n"
-            f"▫️ Go to your group \n▫️ Press the Group's name \n▫️ Press Modify \n▫️ Press on Administrator \n▫️ Press Add Administrator \n▫️ Press the Magnifying Glass \n▫️ Search @MrGreysonBot \n▫️ Confirm"
+            f"▫️ Go to your group \n▫️ Press the Group's name \n▫️ Press Modify \n▫️ Press on Administrator \n▫️ Press Add Administrator \n▫️ Press the Magnifying Glass \n▫️ Search @Shizuka_Minamotos_Robot \n▫️ Confirm"
             f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -493,8 +494,8 @@ def Support_about_callback(update, context):
     query = update.callback_query
     if query.data == "support_":
         query.message.edit_text(
-            text=""" Hi 👋 I'm *Greyson*
-                 \nCheck my support below 👇\n\nNews channel 📣 - @GraysonNews \nSupport Chat 💬 - @GreysonChats. \n\n*Then also your query has not solved you can contact Main developer 👨‍💻* - @kunaldiwan . """,
+            text=""" Hi 👋 I'm *Shizuka Minamoto*
+                 \nCheck my support below 👇\n\nNews channel 📣 - @Zbotscreator \nSupport Chat 💬 - @zbotschat. \n\n*Then also your query has not solved you can contact Main developer 👨‍💻* - @crimsonflashs . """,
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -554,7 +555,7 @@ def Greyson_guide_callback(update, context):
         query.message.edit_text(
             text=f"* ｢ Setup Guide 」\n*"
                  f"\nYou can add me to your group by clicking this [link](http://t.me/MrGreysonBot?startgroup=true) and selecting the chat. \nRead *Admin Permissions* and *Anti-spam* for basic info."
-                 f"\n\nRead Detailed Setup Guide to learn about setting up the bot in detail. (Recommended) .\nIf you need help with further instructions feel free to ask in @GreysonChats."
+                 f"\n\nRead Detailed Setup Guide to learn about setting up the bot in detail. (Recommended) .\nIf you need help with further instructions feel free to ask in @zbotschat."
                  f"",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
@@ -573,7 +574,7 @@ def Greyson_guide_callback(update, context):
                  f"\n\nIf any question about {dispatcher.bot.first_name}, \nLet us know at Support Chat.",
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="☎️ Support",url="t.me/GreysonChats"),InlineKeyboardButton(text="🔙 Back",callback_data="guidemenu_tac")]]),
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="☎️ Support",url="https://t.me/zbotschat"),InlineKeyboardButton(text="🔙 Back",callback_data="guidemenu_tac")]]),
         )
     elif query.data == "guidemenu_permis":
         query.message.edit_text(
@@ -851,7 +852,7 @@ def source(update: Update, context: CallbackContext):
             SOURCE_STRING, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(
                 [
                   [
-                    InlineKeyboardButton(text="↗️ Source ↗️", url="https://github.com/Kunal-Diwan/GreysonBot")
+                    InlineKeyboardButton(text="↗️ Channel  ↗️", url="https://t.me/Zbotscreator")
                  ] 
                 ]
             ),
