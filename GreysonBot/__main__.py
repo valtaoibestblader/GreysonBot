@@ -132,7 +132,7 @@ I have lots of handy features, such as flood control, a warning system, a note k
 ✪ /help: Sends this message; I'll tell you more about myself!
 ✪ /source: Gives you my source .
 
-If you have any bugs or questions on how to use me head to @GreysonChats. \n\nAll commands can be used with the following: / !\n\nAnd the following :-"""
+If you have any bugs or questions on how to use me head to @Zbotscreator. \n\nAll commands can be used with the following: / !\n\nAnd the following :-"""
 
 GreysonG_IMG = "https://telegra.ph/file/6f15beea07d35a0792f1f.jpg"
 
